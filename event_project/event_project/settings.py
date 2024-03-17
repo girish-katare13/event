@@ -39,7 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'event_app',
     'rest_framework',
+    'rest_framework_simplejwt',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -77,8 +85,12 @@ WSGI_APPLICATION = 'event_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE'  : 'django.db.backends.mysql', 
+        'NAME'    : 'djangodb',                 
+        'USER'    : 'root',                     
+        'PASSWORD': 'root',              
+        'HOST'    : '127.0.0.1',                
+        'PORT'    : '3306',
     }
 }
 
